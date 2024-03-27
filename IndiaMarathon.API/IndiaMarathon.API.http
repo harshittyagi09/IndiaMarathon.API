@@ -1,0 +1,6 @@
+@IndiaMarathon.API_HostAddress = http://localhost:5190
+
+GET {{IndiaMarathon.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
