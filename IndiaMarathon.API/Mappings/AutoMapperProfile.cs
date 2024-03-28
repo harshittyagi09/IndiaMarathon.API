@@ -9,7 +9,9 @@ namespace IndiaMarathon.API.Mappings
         public AutoMapperProfile() 
         {
             CreateMap<States, StatesDto>().ReverseMap();
-            CreateMap<AddStateDto,States>().ReverseMap();  
+            CreateMap<AddStateDto,States>().ReverseMap();
+            CreateMap<Level , LevelDto>().ReverseMap();
+            CreateMap<AddLevelDto, Level>().ReverseMap();
         }
     }
 }

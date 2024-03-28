@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MarathonDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnection")));
 
 builder.Services.AddScoped<IStateRepository, SQLStatesRepository>();
+builder.Services.AddScoped<ILevelRepository,SQLLevelRepository>();
 builder.Services.AddAutoMapper(typeof(MarathonDbContext));
 
 var app = builder.Build();
