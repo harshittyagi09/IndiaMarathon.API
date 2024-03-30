@@ -4,11 +4,11 @@ namespace IndiaMarathon.API.Repository
 {
     public interface IStateRepository
     {
-        Task<List<States>>GetStates();
-        Task<States?> GetById(int id);
-        Task<States>CreateState(States state);
-        Task<States?> UpdateState(int id,States state);
-        Task<States?> DeleteState(int id);
+        Task<List<State>>GetStates();
+        Task<State?> GetById(int id);
+        Task<State>CreateState(State state);
+        Task<State?> UpdateState(int id,State state);
+        Task<State?> DeleteState(int id);
 
     }
 }

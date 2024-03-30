@@ -14,6 +14,7 @@ builder.Services.AddDbContext<MarathonDbContext>(options => options.UseSqlServer
 
 builder.Services.AddScoped<IStateRepository, SQLStatesRepository>();
 builder.Services.AddScoped<ILevelRepository,SQLLevelRepository>();
+builder.Services.AddScoped<IMarathonRepository,SQLMarathonRepository>();    
 builder.Services.AddAutoMapper(typeof(MarathonDbContext));
 
 var app = builder.Build();

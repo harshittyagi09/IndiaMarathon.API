@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IndiaMarathon.API.Migrations
 {
     [DbContext(typeof(MarathonDbContext))]
-    [Migration("20240326113657_Initial")]
+    [Migration("20240328083059_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -66,9 +66,6 @@ namespace IndiaMarathon.API.Migrations
                     b.Property<int>("StateId")
                         .HasColumnType("int");
 
-                    b.Property<int>("StatesId")
-                        .HasColumnType("int");
-
                     b.Property<double>("length")
                         .HasColumnType("float");
 
@@ -76,12 +73,12 @@ namespace IndiaMarathon.API.Migrations
 
                     b.HasIndex("LevelId");
 
-                    b.HasIndex("StatesId");
+                    b.HasIndex("StateId");
 
                     b.ToTable("Marathons");
                 });
 
-            modelBuilder.Entity("IndiaMarathon.API.Models.Domain.States", b =>
+            modelBuilder.Entity("IndiaMarathon.API.Models.Domain.State", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,7 +99,7 @@ namespace IndiaMarathon.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("states");
+                    b.ToTable("States");
                 });
 
             modelBuilder.Entity("IndiaMarathon.API.Models.Domain.Marathon", b =>
@@ -113,15 +110,15 @@ namespace IndiaMarathon.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("IndiaMarathon.API.Models.Domain.States", "States")
+                    b.HasOne("IndiaMarathon.API.Models.Domain.State", "State")
                         .WithMany()
-                        .HasForeignKey("StatesId")
+                        .HasForeignKey("StateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Level");
 
-                    b.Navigation("States");
+                    b.Navigation("State");
                 });
 #pragma warning restore 612, 618
         }

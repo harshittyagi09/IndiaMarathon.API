@@ -49,7 +49,7 @@ namespace IndiaMarathon.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateState([FromBody] AddStateDto addStateDto)
         {
-            var StatesDomain= mapper.Map<States>(addStateDto);
+            var StatesDomain= mapper.Map<State>(addStateDto);
             StatesDomain = await stateRepository.CreateState(StatesDomain);
             var StatesDto=mapper.Map<StatesDto>(StatesDomain);
             return CreatedAtAction(nameof(GetStateByID), new { id = StatesDto.Id },StatesDto);
@@ -59,7 +59,7 @@ namespace IndiaMarathon.API.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> UpdateState([FromRoute]int id, AddStateDto addStateDto)
         {
-            var StatesDomain = mapper.Map<States>(addStateDto);
+            var StatesDomain = mapper.Map<State>(addStateDto);
             StatesDomain = await stateRepository.UpdateState(id, StatesDomain);
 
             if(StatesDomain == null)

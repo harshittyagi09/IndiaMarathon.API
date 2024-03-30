@@ -15,38 +15,38 @@ namespace IndiaMarathon.API.Repository
 
         }
 
-        public async Task<States> CreateState(States state)
+        public async Task<State> CreateState(State state)
         {
             await marathonDbContext.AddAsync(state);
             await marathonDbContext.SaveChangesAsync();
             return state;
         }
 
-        public async Task<States?> DeleteState(int id)
+        public async Task<State?> DeleteState(int id)
         {
-            var exisitinregion=await marathonDbContext.states.FirstOrDefaultAsync(s => s.Id == id); 
+            var exisitinregion=await marathonDbContext.States.FirstOrDefaultAsync(s => s.Id == id); 
             if (exisitinregion == null)
             {
                 return null;
             }
-            marathonDbContext.states.Remove(exisitinregion);
+            marathonDbContext.States.Remove(exisitinregion);
             await marathonDbContext.SaveChangesAsync();
             return exisitinregion;
         }
 
-        public async Task<States?> GetById(int id)
+        public async Task<State?> GetById(int id)
         {
-            return await marathonDbContext.states.FirstOrDefaultAsync(s => s.Id == id); 
+            return await marathonDbContext.States.FirstOrDefaultAsync(s => s.Id == id); 
         }
 
-        public async Task<List<States>> GetStates()
+        public async Task<List<State>> GetStates()
         {
-           return await marathonDbContext.states.ToListAsync();
+           return await marathonDbContext.States.ToListAsync();
         }
 
-        public async Task<States?> UpdateState(int id, States state)
+        public async Task<State?> UpdateState(int id, State state)
         {
-          var existingState= await marathonDbContext.states.FirstOrDefaultAsync(x=>x.Id == id);
+          var existingState= await marathonDbContext.States.FirstOrDefaultAsync(x=>x.Id == id);
             if (existingState == null)
             {
                 return null;

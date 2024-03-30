@@ -11,7 +11,7 @@ namespace IndiaMarathon.API.Data
         }
        
         public DbSet<Level> Levels { get; set; }
-        public DbSet<States> states { get; set; }
+        public DbSet<State> States { get; set; }
         public DbSet<Marathon> Marathons { get; set; }
     }
 }

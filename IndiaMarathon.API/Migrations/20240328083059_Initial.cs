@@ -24,7 +24,7 @@ namespace IndiaMarathon.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "states",
+                name: "States",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -35,7 +35,7 @@ namespace IndiaMarathon.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_states", x => x.Id);
+                    table.PrimaryKey("PK_States", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,8 +49,7 @@ namespace IndiaMarathon.API.Migrations
                     length = table.Column<double>(type: "float", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LevelId = table.Column<int>(type: "int", nullable: false),
-                    StateId = table.Column<int>(type: "int", nullable: false),
-                    StatesId = table.Column<int>(type: "int", nullable: false)
+                    StateId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,9 +61,9 @@ namespace IndiaMarathon.API.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Marathons_states_StatesId",
-                        column: x => x.StatesId,
-                        principalTable: "states",
+                        name: "FK_Marathons_States_StateId",
+                        column: x => x.StateId,
+                        principalTable: "States",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -75,9 +74,9 @@ namespace IndiaMarathon.API.Migrations
                 column: "LevelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Marathons_StatesId",
+                name: "IX_Marathons_StateId",
                 table: "Marathons",
-                column: "StatesId");
+                column: "StateId");
         }
 
         /// <inheritdoc />
@@ -90,7 +89,7 @@ namespace IndiaMarathon.API.Migrations
                 name: "Levels");
 
             migrationBuilder.DropTable(
-                name: "states");
+                name: "States");
         }
     }
 }
